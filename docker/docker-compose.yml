@@ -1,4 +1,5 @@
-version: "3.3"
+version: "3.8"
+
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
@@ -8,7 +9,7 @@ services:
       - app
 
   kafka:
-    image: confluentinc/cp-kafka:6.0.0
+    image: confluentinc/cp-kafka:latest
     depends_on:
       - zookeeper
     ports:
@@ -26,7 +27,7 @@ services:
       - app
 
   control-center:
-    image: confluentinc/cp-enterprise-control-center:6.0.0
+    image: confluentinc/cp-enterprise-control-center:latest
     depends_on:
       - kafka
     ports:
@@ -37,6 +38,17 @@ services:
       CONTROL_CENTER_CONNECT_CLUSTER: http://kafka-connect:8083
       PORT: 9021
     networks:
+      - app
+
+  kafdrop:
+    image: obsidiandynamics/kafdrop:latest
+    depends_on:
+      - kafka
+    ports:
+      - 19000:9000
+    environment:
+      KAFKA_BROKERCONNECT: kafka:9092
+    networks: 
       - app
 
 networks:
