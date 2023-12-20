@@ -21,4 +21,7 @@ produzir mensagens:
 consumir mensagens:
 - kafka-console-consumer --topic my-topic --from-beginning --bootstrap-server localhost:9092
 
+# Gerar classe a partir do arquivo avro
+- Botão direto em pom -> mavem -> generate sources
+
 

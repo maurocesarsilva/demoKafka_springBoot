@@ -1,0 +1,13 @@
+{
+  "namespace": "br.com.example.broker.producer",
+  "type": "record",
+  "name": "TesteObj",
+  "version":"1.0.0",
+  "fields": [
+    {
+      "name": "Name",
+      "type": "string",
+      "avro.java.string": "String"
+    }
+  ]
+}
